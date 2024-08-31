@@ -13,8 +13,8 @@ openmeteo = openmeteo_requests.Client(session = retry_session)
 # The order of variables in hourly or daily is important to assign them correctly below
 url = "https://air-quality-api.open-meteo.com/v1/air-quality"
 params = {
-	"latitude": 69.3535,
-	"longitude": 88.2027,
+	"latitude": 55,
+	"longitude": 37,
 	"current": ["nitrogen_dioxide", "sulphur_dioxide", "ozone"],
 	"forecast_days": 1
 }
@@ -77,4 +77,7 @@ elif current_ozone <= 380:
 elif current_ozone <= 800:
     print("Количество Озона является смертельным")  
 
-
+if current_nitrogen_dioxide >= 230 and current_sulphur_dioxide >= 500 and current_ozone >= 240:
+    print("Уровень загрязнённости воздуха является высоким")
+elif current_nitrogen_dioxide <= 190 and current_sulphur_dioxide <= 400 and current_ozone <= 180:
+    print("Уровень загрязнённости воздуха является допустимым")
